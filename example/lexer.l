@@ -4,8 +4,8 @@
 #define YY_VALUE(Tok) (yylval->string = strdup(yytext), Tok)
 #define YY_NEW_LINE
 #define YY_USER_ACTION {             \
-	yylloc->begin = yylloc->end; \
-	yylloc->end   = yylineno;    \
+        yylloc->begin = yylloc->end; \
+        yylloc->end   = yylineno;    \
 }
 
 #define yyterminate() return TOK_EOF;
@@ -58,11 +58,11 @@ Identifier {alpha}{alnum}*
 
 void example_lexer_begin(driver_t *driver)
 {
-	yylex_init_extra(driver, &driver->scanner);
-	yyrestart(driver->fd, driver->scanner);
+        yylex_init_extra(driver, &driver->scanner);
+        yyrestart(driver->fd, driver->scanner);
 }
 
 void example_lexer_end(driver_t *driver)
 {
-	yylex_destroy(driver->scanner);
+        yylex_destroy(driver->scanner);
 }

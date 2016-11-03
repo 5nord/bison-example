@@ -25,12 +25,12 @@
     #include <stdio.h>
     #include "node.h"
 
-	typedef struct driver {
-    	const char *file;
+    typedef struct driver {
+        const char *file;
         FILE *fd;
-    	node_t *root;
-    	void *scanner;
-	} driver_t;
+        node_t *root;
+        void *scanner;
+    } driver_t;
 
     #define YYLTYPE loc_t
 }
@@ -42,22 +42,22 @@
 
 %{
     /* Bison needs these macros to handle custom locations */
-	#define YYLLOC_DEFAULT(Cur, Rhs, N)                 \
-	do                                                  \
-  	if (N) {                                            \
+    #define YYLLOC_DEFAULT(Cur, Rhs, N)                 \
+    do                                                  \
+    if (N) {                                            \
         (Cur) = node_loc_merge(&(YYRHSLOC(Rhs, 1)),     \
                                &(YYRHSLOC(Rhs, N)));    \
-  	} else {                                            \
-      	(Cur).begin = (Cur).end = YYRHSLOC(Rhs, 0).end; \
-  	}                                                   \
-	while (0)
+    } else {                                            \
+        (Cur).begin = (Cur).end = YYRHSLOC(Rhs, 0).end; \
+    }                                                   \
+    while (0)
 
     /* Create a subtree of type `Type` */
-    #define TREE(Type, ...) \
-        new_node_tree(yylocp, NODE_ ## Type, \
+    #define TREE(Type, ...)                             \
+        new_node_tree(yylocp, NODE_ ## Type,            \
                         COUNT_ARGS(__VA_ARGS__), ## __VA_ARGS__)
-	#define COUNT_ARGS(...) \
-		(sizeof((node_t*[]){__VA_ARGS__})/sizeof(node_t*))
+    #define COUNT_ARGS(...) \
+        (sizeof((node_t*[]){__VA_ARGS__})/sizeof(node_t*))
 
     /* Create a value node to type `Type` */
     #define VALUE(Type, Str) \
@@ -103,7 +103,7 @@
     /* NOTE: lexer protoype is in the parser-header to prevent
      *       conflicting types.
      */
-	#define YY_DECL int yylex \
+    #define YY_DECL int yylex \
                (YYSTYPE* yylval_param, loc_t* yylloc_param , void *yyscanner)
     extern YY_DECL;
 

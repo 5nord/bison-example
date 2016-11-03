@@ -22,9 +22,9 @@ Normally auto-generated files like Makefile.in or parser.c are included in the
 repository to simplify compilation. But I left them out, to keep the example
 small. So, that's how you bootstrap autotools and compile this example:
 
-        $ autoreconf -i
-	$ ./configure
-        $ make
+    $ autoreconf -i
+    $ ./configure
+    $ make
 
 # Notes
 

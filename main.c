@@ -4,15 +4,15 @@
 
 int dump_tree(node_t *node, void *priv)
 {
-	int *indent = (int*) priv;
+    int *indent = (int*) priv;
 
-	printf("%*s%lu: %s",
+    printf("%*s%lu: %s",
            *indent*4, "",
            node->loc.begin,
            node_type_str(node->type));
 
-	if (node_has_value(node->type))
-		printf(": `%s`", node->value);
+    if (node_has_value(node->type))
+        printf(": `%s`", node->value);
 
     printf("\n");
 
@@ -20,7 +20,7 @@ int dump_tree(node_t *node, void *priv)
     node_visit_children(node, dump_tree, indent);
     --(*indent);
 
-	return 0;
+    return 0;
 }
 
 int main(int argc, char *argv[])
@@ -34,8 +34,8 @@ int main(int argc, char *argv[])
     if (!root)
         return -1;
 
-	int indent = 0;
-	node_visit(root, dump_tree, &indent);
+    int indent = 0;
+    node_visit(root, dump_tree, &indent);
 
     return 0;
 }
