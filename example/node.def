@@ -1,0 +1,19 @@
+#ifndef VALUE
+#define VALUE(Kind) TREE(Kind)
+#endif
+
+#ifndef TREE
+#define TREE(Kind)
+#endif
+
+/* value terminals */
+VALUE(ID)
+VALUE(STRING)
+VALUE(INTEGER)
+VALUE(FLOAT)
+
+TREE(FOO)
+TREE(BAR)
+
+#undef TREE
+#undef VALUE
