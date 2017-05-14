@@ -15,6 +15,13 @@ This example uses autotools, a pure flex-scanner and bison-parser with locations
 elements using single-linked lists. Simple routines for tree traversal are
 provided, too.
 
+The example-grammar is just nonsense:
+
+    Names  ::= {Name}+
+    Name   ::= ID | FooBar
+    FooBar ::= "foo" [Bar]
+    Bar    ::= "bar"
+
 
 ## Compilation
 
@@ -42,6 +49,9 @@ small. So, that's how you bootstrap autotools and compile this example:
  * Node types are defined in `example/node.def`.
  * Nodes either have a value _or_ children.
  * Appending nodes is inefficient due to single-linked lists.
+ * Line handling seems to be over-engineered. That's because in my projects I
+   prefer to use file-offsets and line-caches instead; similar to clang or
+   golang parsers. See `source.h` at http://github.com/5nord/kt for example.
 
 
 ## Bison
