@@ -51,7 +51,7 @@ small. So, that's how you bootstrap autotools and compile this example:
  * Appending nodes is inefficient due to single-linked lists.
  * Line handling seems to be over-engineered. That's because in my projects I
    prefer to use file-offsets and line-caches instead; similar to clang or
-   golang parsers. See `source.h` at http://github.com/5nord/kt for example.
+   golang parsers. See https://github.com/nokia/ntt/blob/bison-parser/ttcn3/syntax/source.h for example.
 
 
 ## Bison
